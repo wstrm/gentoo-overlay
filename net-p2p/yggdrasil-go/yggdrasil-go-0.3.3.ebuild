@@ -7,9 +7,10 @@ GOLANG_PKG_IMPORTPATH="github.com/yggdrasil-network"
 GOLANG_PKG_VERSION="1f1ba3bab8fe562ac0f0bda8e99070b6ab290a6a"
 GOLANG_PKG_BUILDPATH="/cmd/..."
 GOLANG_PKG_IS_MULTIPLE=1
-GOLANG_PKG_LDFLAGS="-X ${GOLANG_PKG_IMPORTPATH}/${PN}/src/yggdrasil.buildName=yggdrasil \
-				    -X ${GOLANG_PKG_IMPORTPATH}/${PN}/src/yggdrasil.buildVersion=${PV} \
-					-s -w"
+GOLANG_PKG_LDFLAGS="\
+	-X ${GOLANG_PKG_IMPORTPATH}/${PN}/src/yggdrasil.buildName=yggdrasil \
+	-X ${GOLANG_PKG_IMPORTPATH}/${PN}/src/yggdrasil.buildVersion=${PV} \
+	-s -w"
 GOLANG_PKG_DEPENDENCIES=(
 	"github.com/docker/libcontainer:5dc7ba0"
 	"github.com/gologme/log:4e5d8cc"
