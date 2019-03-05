@@ -32,3 +32,9 @@ HOMEPAGE="https://yggdrasil-network.github.io/"
 
 LICENSE="LGPL-3_linking-exception"
 SLOT="0"
+
+src_install() {
+	golang-single_src_install
+
+	newinitd "${FILESDIR}"/${PN}.init yggdrasil || die "installing init failed"
+}
