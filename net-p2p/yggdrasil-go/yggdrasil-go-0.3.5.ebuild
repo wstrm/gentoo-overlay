@@ -1,40 +1,46 @@
 # Copyright 2019 William Wennerström <william@willeponken.me>
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-GOLANG_PKG_IMPORTPATH="github.com/yggdrasil-network"
-GOLANG_PKG_VERSION="c11f08f2a38fcb634d6e8a1a74bec960c4114882"
-GOLANG_PKG_BUILDPATH="/cmd/..."
-GOLANG_PKG_IS_MULTIPLE=1
-GOLANG_PKG_LDFLAGS="\
-	-X ${GOLANG_PKG_IMPORTPATH}/${PN}/src/yggdrasil.buildName=yggdrasil \
-	-X ${GOLANG_PKG_IMPORTPATH}/${PN}/src/yggdrasil.buildVersion=${PV} \
-	-s -w"
-GOLANG_PKG_DEPENDENCIES=(
-	"github.com/docker/libcontainer:5dc7ba0"
-	"github.com/gologme/log:4e5d8cc"
-	"github.com/hjson/hjson-go:a25ecf6"
-	"github.com/kardianos/minwinsvc:cad6b2b"
-	"github.com/mitchellh/mapstructure:3536a92"
-	"github.com/songgao/packets:549a10c"
-	"github.com/yggdrasil-network/water:f732c88"
-	"github.com/golang/crypto:505ab14 -> golang.org/x"
-	"github.com/golang/net:6105869 -> golang.org/x"
-	"github.com/golang/sys:70b957f -> golang.org/x"
-	"github.com/golang/text:f21a4df -> golang.org/x"
+EGO_PN="github.com/yggdrasil-network/yggdrasil-go"
+EGO_VENDOR=(
+	"github.com/docker/libcontainer 5dc7ba0f24332273461e45bc49edcb4d5aa6c44c"
+	"github.com/gologme/log 4e5d8ccb38e83c62d829cf88456808e0d9c56df4"
+	"github.com/hjson/hjson-go a25ecf6bd2223d1d5a8cef7ac7be8a4d60a90a61"
+	"github.com/kardianos/minwinsvc cad6b2b879b0970e4245a20ebf1a81a756e2bb70"
+	"github.com/mitchellh/mapstructure 3536a929edddb9a5b34bd6861dc4a9647cb459fe"
+	"github.com/songgao/packets 549a10cd4091c1e78542d3bb357036299cb9fcd6"
+	"github.com/yggdrasil-network/water f732c88f34aeb1785591e30dd55362ba1c7f2132"
+	"golang.org/x/crypto 505ab145d0a99da450461ae2c1a9f6cd10d1f447 github.com/golang/crypto"
+	"golang.org/x/net 610586996380ceef02dd726cc09df7e00a3f8e56 github.com/golang/net"
+	"golang.org/x/sys 70b957f3b65e069b4930ea94e2721eefa0f8f695 github.com/golang/sys"
+	"golang.org/x/text f21a4dfb5e38f5895301dc265a8def02365cc3d0 github.com/golang/text"
 )
 
-inherit golang-single
+inherit golang-vcs-snapshot
+
+SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	${EGO_VENDOR_URI}"
 
 DESCRIPTION="An experiment in scalable routing as an encrypted IPv6 overlay network"
 HOMEPAGE="https://yggdrasil-network.github.io/"
-
 LICENSE="LGPL-3_linking-exception"
+
 SLOT="0"
+IUSE=""
+KEYWORDS="~amd64"
+
+src_compile() {
+	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" \
+		go install -ldflags "\
+		-X ${EGO_PN}/src/yggdrasil.buildName=yggdrasil \
+		-X ${EGO_PN}/src/yggdrasil.buildVersion=${PV} \
+		-s -w" \
+		${EGO_PN}/cmd/... || die
+}
 
 src_install() {
-	golang-single_src_install
-
+	dobin bin/*
 	newinitd "${FILESDIR}"/${PN}.init yggdrasil || die "installing init failed"
 }
