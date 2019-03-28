@@ -263,13 +263,16 @@ LICENSE="MIT"
 
 SLOT="0"
 IUSE=""
+RESTRICT="mirror"
 KEYWORDS="-* ~amd64 ~arm ~x86"
 
 RDEPEND="sys-fs/fuse"
 
+QA_PRESTRIPPED="/usr/bin/ipfs"
+
 src_compile() {
 	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" \
-		go install -ldflags "-s -w" ${EGO_PN}/cmd/ipfs || die
+		go install -v -work -x -ldflags "-s -w" ${EGO_PN}/cmd/ipfs || die
 }
 
 src_install() {
