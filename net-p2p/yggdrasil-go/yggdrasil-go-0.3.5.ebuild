@@ -18,7 +18,7 @@ EGO_VENDOR=(
 	"golang.org/x/text f21a4dfb5e38f5895301dc265a8def02365cc3d0 github.com/golang/text"
 )
 
-inherit golang-vcs-snapshot
+inherit golang-vcs-snapshot linux-info systemd
 
 SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
@@ -31,6 +31,16 @@ SLOT="0"
 IUSE=""
 KEYWORDS="~amd64"
 
+pkg_setup() {
+	linux-info_pkg_setup
+	if ! linux_config_exists; then
+		eerror "Unable to check your kernel for TUN support"
+	else
+		CONFIG_CHECK="~TUN"
+		ERROR_TUN="Your kernel lacks TUN support."
+	fi
+}
+
 src_compile() {
 	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" \
 		go install -ldflags "\
@@ -42,5 +52,7 @@ src_compile() {
 
 src_install() {
 	dobin bin/*
-	newinitd "${FILESDIR}"/${PN}.init yggdrasil || die "installing init failed"
+
+	systemd_dounit "src/${EGO_PN}/contrib/systemd/yggdrasil.service"
+	newinitd "src/${EGO_PN}/contrib/openrc/yggdrasil" yggdrasil
 }
