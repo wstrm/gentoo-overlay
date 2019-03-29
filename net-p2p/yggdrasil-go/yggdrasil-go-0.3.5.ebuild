@@ -1,4 +1,4 @@
-# Copyright 2019 William Wennerström <william@willeponken.me>
+# Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,7 @@ SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 DESCRIPTION="An experiment in scalable routing as an encrypted IPv6 overlay network"
 HOMEPAGE="https://yggdrasil-network.github.io/"
-LICENSE="LGPL-3_linking-exception"
+LICENSE="LGPL-3"
 
 SLOT="0"
 IUSE=""
