@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 EGIT_REPO_URI="https://github.com/boothj5/profanity.git"
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://www.profanity.im/"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS=""
-IUSE="gpg -gtk libnotify otr plugins +themes xscreensaver"
+IUSE="gpg -gtk libnotify otr omemo plugins +themes xscreensaver"
 
 RDEPEND=">=dev-libs/glib-2.26:2
 		|| (
@@ -26,6 +26,10 @@ RDEPEND=">=dev-libs/glib-2.26:2
 		gtk? ( >=x11-libs/gtk+-2.24.10:2 )
 		gpg? ( app-crypt/gpgme )
 		otr? ( net-libs/libotr )
+		omemo? (
+			>=net-libs/libsignal-protocol-c-2.3.1
+			>=dev-libs/libgcrypt-1.8.3
+		)
 		plugins? ( dev-lang/python )
 		xscreensaver? ( x11-libs/libXScrnSaver )
 		libnotify? ( x11-libs/libnotify )"
@@ -33,6 +37,7 @@ DEPEND="${RDEPEND}
 		sys-devel/autoconf-archive"
 
 src_prepare() {
+		default
 		eautoreconf
 }
 
@@ -42,6 +47,7 @@ src_configure() {
 			$(use_enable gtk icons) \
 			$(use_enable libnotify notifications) \
 			$(use_enable otr) \
+			$(use_enable omemo) \
 			$(use_enable plugins) \
 			$(use_enable plugins python-plugins) \
 			$(use_enable plugins c-plugins) \

@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,6 +31,8 @@ SLOT="0"
 IUSE=""
 KEYWORDS="~amd64"
 
+QA_PRESTRIPPED="/usr/bin/yggdrasil /usr/bin/yggdrasilctl"
+
 pkg_setup() {
 	linux-info_pkg_setup
 	if ! linux_config_exists; then
@@ -43,7 +45,7 @@ pkg_setup() {
 
 src_compile() {
 	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" \
-		go install -ldflags "\
+		go install -v -work -x -ldflags "\
 		-X ${EGO_PN}/src/yggdrasil.buildName=yggdrasil \
 		-X ${EGO_PN}/src/yggdrasil.buildVersion=${PV} \
 		-s -w" \
