@@ -24,8 +24,8 @@ REQUIRED_USE="
 CDEPEND="
 	dev-libs/glib:2
 	|| (
-		>=dev-libs/libmesode-0.9.1[ssl]
-		>=dev-libs/libstrophe-0.9.1[ssl,xml]
+		>=dev-libs/libmesode-0.9.2[ssl]
+		>=dev-libs/libstrophe-0.9.2[ssl,xml]
 	)
 	net-misc/curl
 	sys-apps/util-linux:0
@@ -35,7 +35,7 @@ CDEPEND="
 	libnotify? ( x11-libs/libnotify )
 	otr? ( net-libs/libotr )
 	omemo? (
-		>=net-libs/libsignal-protocol-c-2.3.1
+		>=net-libs/libsignal-protocol-c-2.3.2
 		>=dev-libs/libgcrypt-1.7.0
 	)
 	pgp? ( app-crypt/gpgme )

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>william+gentoo-overlay@optmzr.se</email>
+		<name>William Wennerström</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">boothj5/libmesode</remote-id>
+		<bugs-to>https://github.com/boothj5/libmesode/issues</bugs-to>
+		<doc>https://github.com/boothj5/libmesode</doc>
+	</upstream>
+	<use>
+		<flag name="doc">Documentation</flag>
+		<flag name="examples">Code examples</flag>
+		<flag name="libressl">Use LibreSSL for TLS</flag>
+		<flag name="ssl">Enable SSL/TLS support</flag>
+		<flag name="static-libs">Use static libraries</flag>
+		<flag name="test">Run the test suite</flag>
+	</use>
+</pkgmetadata>

@@ -14,7 +14,7 @@ RESTRICT="mirror"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="+c-plugins icons +largefile libnotify +otr pgp +plugins python-plugins test +themes xscreensaver"
 REQUIRED_USE="
 	c-plugins? ( plugins )
@@ -24,8 +24,8 @@ REQUIRED_USE="
 CDEPEND="
 	dev-libs/glib:2
 	|| (
-		>=dev-libs/libmesode-0.9.1[ssl]
-		>=dev-libs/libstrophe-0.9.1[ssl,xml]
+		>=dev-libs/libmesode-0.9.2[ssl]
+		>=dev-libs/libstrophe-0.9.2[ssl,xml]
 	)
 	net-misc/curl
 	sys-apps/util-linux:0

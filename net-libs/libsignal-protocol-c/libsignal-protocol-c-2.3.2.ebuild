@@ -3,13 +3,12 @@
 
 EAPI=7
 
-inherit git-r3 multilib cmake-utils
+inherit multilib cmake-utils
 
 DESCRIPTION="Signal Protocol C Library"
 HOMEPAGE="https://www.whispersystems.org/"
-
-EGIT_REPO_URI="https://github.com/signalapp/libsignal-protocol-c"
-EGIT_COMMIT="v${PV}"
+SRC_URI="https://github.com/signalapp/${PN}/archive/v${PV}.tar.gz"
+KEYWORDS="~amd64"
 
 LICENSE="GPL-3"
 SLOT="0"
