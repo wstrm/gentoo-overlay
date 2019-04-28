@@ -19,7 +19,7 @@ layman -a optmzr
  - [ipfs.io](https://ipfs.io/)
 
 A non-binary package for the IPFS Go implementation, uses the official Go ebuild
-classes.
+classes and does _not_ require to disable the network sandbox.
 
 ### Profanity (`net-im/profanity`)
 > Profanity is a console based XMPP client written in C using ncurses and
