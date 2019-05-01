@@ -1,4 +1,4 @@
-# Copyright 2019 William Wennerström <william@willeponken.me>
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -262,21 +262,23 @@ HOMEPAGE="https://ipfs.io/"
 LICENSE="MIT"
 
 SLOT="0"
-IUSE=""
+IUSE="debug +fuse test"
 RESTRICT="mirror"
 KEYWORDS="-* ~amd64 ~arm ~x86"
 
-RDEPEND="sys-fs/fuse"
+RDEPEND="fuse? ( sys-fs/fuse:0 )"
 
 QA_PRESTRIPPED="/usr/bin/ipfs"
 
 src_compile() {
 	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" \
-		go install -v -work -x -ldflags "-s -w" ${EGO_PN}/cmd/ipfs || die
+		go install -v -work -x -tags "$(usex !fuse nofuse '')" \
+			${EGO_PN}/cmd/ipfs || die
 }
 
 src_install() {
 	dobin bin/ipfs
+	use debug && dostrip -x /usr/bin/ipfs
 
 	systemd_dounit "${FILESDIR}/ipfs.service"
 	newinitd "${FILESDIR}/ipfs.init" ipfs
@@ -284,6 +286,10 @@ src_install() {
 	newbashcomp "${DISTDIR}/${P}.bash" "ipfs"
 
 	keepdir /var/log/ipfs
+}
+
+src_test() {
+	TEST_NO_FUSE="$(usex fuse 0 1)" emake test_go_short
 }
 
 pkg_preinst() {
