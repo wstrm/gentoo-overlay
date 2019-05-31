@@ -9,7 +9,7 @@ inherit autotools git-r3 python-single-r1
 
 DESCRIPTION="A console based XMPP client inspired by Irssi"
 HOMEPAGE="http://profanity.im"
-EGIT_REPO_URI="https://github.com/boothj5/profanity.git"
+EGIT_REPO_URI="https://github.com/profanity-im/profanity"
 RESTRICT="mirror"
 
 LICENSE="GPL-3"
