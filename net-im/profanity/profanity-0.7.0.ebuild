@@ -5,16 +5,16 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools git-r3 python-single-r1
+inherit autotools python-single-r1
 
 DESCRIPTION="A console based XMPP client inspired by Irssi"
 HOMEPAGE="https://profanity-im.github.io"
-EGIT_REPO_URI="https://github.com/profanity-im/profanity"
+SRC_URI="https://profanity-im.github.io/${PN}-${PV}.tar.gz"
 RESTRICT="mirror"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="+c-plugins icons +largefile libnotify +otr omemo pgp +plugins python-plugins test +themes xscreensaver"
 REQUIRED_USE="
 	c-plugins? ( plugins )

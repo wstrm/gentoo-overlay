@@ -5,17 +5,17 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools git-r3 python-single-r1
+inherit autotools python-single-r1
 
 DESCRIPTION="A console based XMPP client inspired by Irssi"
 HOMEPAGE="https://profanity-im.github.io"
-EGIT_REPO_URI="https://github.com/profanity-im/profanity"
+SRC_URI="https://profanity-im.github.io/${PN}-${PV}.tar.gz"
 RESTRICT="mirror"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
-IUSE="+c-plugins icons +largefile libnotify +otr omemo pgp +plugins python-plugins test +themes xscreensaver"
+KEYWORDS="~amd64"
+IUSE="+c-plugins icons +largefile libnotify +otr pgp +plugins python-plugins test +themes xscreensaver"
 REQUIRED_USE="
 	c-plugins? ( plugins )
 	python-plugins? ( plugins ${PYTHON_REQUIRED_USE} )
@@ -34,10 +34,6 @@ CDEPEND="
 	icons? ( >=x11-libs/gtk+-2.24.10:2 )
 	libnotify? ( x11-libs/libnotify )
 	otr? ( net-libs/libotr )
-	omemo? (
-		>=net-libs/libsignal-protocol-c-2.3.2
-		>=dev-libs/libgcrypt-1.7.0
-	)
 	pgp? ( app-crypt/gpgme )
 	python-plugins? ( ${PYTHON_DEPS} )
 	xscreensaver? ( x11-libs/libXScrnSaver )
@@ -63,7 +59,6 @@ src_configure() {
 		$(use_enable largefile)
 		$(use_enable libnotify notifications)
 		$(use_enable otr)
-		$(use_enable omemo)
 		$(use_enable pgp)
 		$(use_enable plugins)
 		$(use_enable python-plugins)
