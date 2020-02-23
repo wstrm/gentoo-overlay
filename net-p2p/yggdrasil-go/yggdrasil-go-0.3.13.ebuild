@@ -1,22 +1,26 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 EGO_PN="github.com/yggdrasil-network/yggdrasil-go"
 EGO_VENDOR=(
-	"github.com/docker/libcontainer 5dc7ba0f24332273461e45bc49edcb4d5aa6c44c"
-	"github.com/gologme/log 4e5d8ccb38e83c62d829cf88456808e0d9c56df4"
-	"github.com/hjson/hjson-go a25ecf6bd2223d1d5a8cef7ac7be8a4d60a90a61"
-	"github.com/kardianos/minwinsvc cad6b2b879b0970e4245a20ebf1a81a756e2bb70"
-	"github.com/mitchellh/mapstructure 3536a929edddb9a5b34bd6861dc4a9647cb459fe"
-	"github.com/songgao/packets 549a10cd4091c1e78542d3bb357036299cb9fcd6"
-	"github.com/yggdrasil-network/water f732c88f34aeb1785591e30dd55362ba1c7f2132"
-	"golang.org/x/crypto 505ab145d0a99da450461ae2c1a9f6cd10d1f447 github.com/golang/crypto"
-	"golang.org/x/net 610586996380ceef02dd726cc09df7e00a3f8e56 github.com/golang/net"
-	"golang.org/x/sys 70b957f3b65e069b4930ea94e2721eefa0f8f695 github.com/golang/sys"
-	"golang.org/x/text f21a4dfb5e38f5895301dc265a8def02365cc3d0 github.com/golang/text"
+        "github.com/Arceliar/phony d0c68492aca0"
+        "github.com/gologme/log 4e5d8ccb38e8"
+        "github.com/hashicorp/go-syslog v1.0.0"
+        "github.com/hjson/hjson-go v3.0.1"
+        "github.com/kardianos/minwinsvc cad6b2b879b0"
+        "github.com/mitchellh/mapstructure v1.1.2"
+        "github.com/vishvananda/netlink v1.0.0"
+        "github.com/vishvananda/netns 7109fa855b0f"
+        "golang.org/x/crypto 53104e6ec876 github.com/golang/crypto"
+        "golang.org/x/net c0dbc17a3553 github.com/golang/net"
+        "golang.org/x/sys a1369afcdac7 github.com/golang/sys"
+        "golang.org/x/text v0.3.2 github.com/golang/text"
+        "golang.zx2c4.com/wireguard v0.0.20200121 github.com/WireGuard/wireguard-go"
+        "golang.zx2c4.com/wireguard/windows cb4a03094c25 github.com/WireGuard/wireguard-windows"
 )
+
 
 inherit golang-vcs-snapshot linux-info systemd
 
