@@ -3,12 +3,14 @@ A Gentoo overlay with some goodies.
 
 ## Add this overlay
 With `eselect-repository`:
-```
+
+```bash
 eselect repository enable optmzr
 ```
 
 Or with `layman`:
-```
+
+```bash
 layman -a optmzr
 ```
 
