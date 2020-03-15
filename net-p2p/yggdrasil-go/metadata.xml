@@ -3,12 +3,8 @@
 
 <pkgmetadata>
 	<maintainer type="person">
-		<email>william@willeponken.me</email>
+		<email>william@wstrm.dev</email>
 		<name>William Wennerström</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
 		Yggdrasil is an early-stage implementation of a fully end-to-end

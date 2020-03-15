@@ -5,22 +5,21 @@ EAPI=7
 
 EGO_PN="github.com/yggdrasil-network/yggdrasil-go"
 EGO_VENDOR=(
-        "github.com/Arceliar/phony d0c68492aca0"
-        "github.com/gologme/log 4e5d8ccb38e8"
-        "github.com/hashicorp/go-syslog v1.0.0"
-        "github.com/hjson/hjson-go v3.0.1"
-        "github.com/kardianos/minwinsvc cad6b2b879b0"
-        "github.com/mitchellh/mapstructure v1.1.2"
-        "github.com/vishvananda/netlink v1.0.0"
-        "github.com/vishvananda/netns 7109fa855b0f"
-        "golang.org/x/crypto 53104e6ec876 github.com/golang/crypto"
-        "golang.org/x/net c0dbc17a3553 github.com/golang/net"
-        "golang.org/x/sys a1369afcdac7 github.com/golang/sys"
-        "golang.org/x/text v0.3.2 github.com/golang/text"
-        "golang.zx2c4.com/wireguard v0.0.20200121 github.com/WireGuard/wireguard-go"
-        "golang.zx2c4.com/wireguard/windows cb4a03094c25 github.com/WireGuard/wireguard-windows"
+	"github.com/Arceliar/phony d0c68492aca0"
+	"github.com/gologme/log 4e5d8ccb38e8"
+	"github.com/hashicorp/go-syslog v1.0.0"
+	"github.com/hjson/hjson-go v3.0.1"
+	"github.com/kardianos/minwinsvc cad6b2b879b0"
+	"github.com/mitchellh/mapstructure v1.1.2"
+	"github.com/vishvananda/netlink v1.0.0"
+	"github.com/vishvananda/netns 7109fa855b0f"
+	"golang.org/x/crypto 53104e6ec876 github.com/golang/crypto"
+	"golang.org/x/net c0dbc17a3553 github.com/golang/net"
+	"golang.org/x/sys a1369afcdac7 github.com/golang/sys"
+	"golang.org/x/text v0.3.2 github.com/golang/text"
+	"golang.zx2c4.com/wireguard v0.0.20200121 github.com/WireGuard/wireguard-go"
+	"golang.zx2c4.com/wireguard/windows cb4a03094c25 github.com/WireGuard/wireguard-windows"
 )
-
 
 inherit golang-vcs-snapshot linux-info systemd
 
